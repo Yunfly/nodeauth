@@ -71,6 +71,12 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.get('*',function(req,res,next){
+  // 退出登录
+  res.locals.user = req.user || null;
+  next();
+});
+
 app.use('/', routes);
 app.use('/users', users);
 

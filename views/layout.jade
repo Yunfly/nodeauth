@@ -8,24 +8,26 @@ html
     .container
      nav.navbar.navbar-default.navbar-fixed-top
       .container
-          .navbar-header
+            .navbar-header
                button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
                   span.sr-only Toggle navigation
                   span.icon-bar
                   span.icon-bar
                   span.icon-bar
               a.navbar-brand NodeAuth
-              #navbar.collapse.navbar-collapse
+            #navbar.collapse.navbar-collapse
               ul.nav.navbar-nav.navbar-left.col-sm-3
                   li(class=(title == 'Members' ? 'active' : ''))
                       a(href='/') Members
-                  li(class=(title == 'Register' ? 'active' : ''))
-                      a(href='/users/register') Register
-                  li(class=(title == 'login' ? 'active' : ''))
-                      a(href='/users/login') login
+                  if !user
+                      li(class=(title == 'Register' ? 'active' : ''))
+                          a(href='/users/register') Register
+                      li(class=(title == 'login' ? 'active' : ''))
+                          a(href='/users/login') login
               ul.nav.navbar-nav.navbar-right
-                 li
-                     a(href='/users/logout') logout
+                  if user
+                      li
+                          a(href='/users/logout') logout
     .container
           != messages()
     block content

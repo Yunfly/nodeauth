@@ -7,7 +7,11 @@ router.get('/',ensureAuthenticated, function(req, res, next) {
 });
 
 function ensureAuthenticated(req,res,next){
-	if (req.is) {}
+	// 点击首页时候，若检测用户退出登录后，跳转到登录界面
+	if (req.isAuthenticated()) {
+		return next();
+	}
+	res.redirect("/users/login")
 }
 
 module.exports = router;
