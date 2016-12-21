@@ -9,7 +9,8 @@ var db = mongoose.connection;
 var UserSchema = mongoose.Schema({
 	username: {
 		type: String,
-		index: true
+		index: true,
+		unique: true
 	},
 	password: {
 		type: String,require:true,bcrypt:true
